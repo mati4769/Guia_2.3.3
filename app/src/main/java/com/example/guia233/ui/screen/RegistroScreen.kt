@@ -114,7 +114,6 @@ fun RegistroScreen(
 
                 }
                 //fin agregar Persistencia
-
             },
             modifier = Modifier.fillMaxWidth()
         ) {
