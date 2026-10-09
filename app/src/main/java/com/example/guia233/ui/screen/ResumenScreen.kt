@@ -13,14 +13,14 @@ import com.example.guia233.viewmodel.UsuarioViewModel
 
 @Composable
 fun ResumenScreen(viewModel: UsuarioViewModel) {
-    val estado by viewModel.estado.collectAsState()
+    val ultimo by viewModel.ultimoUsuario.collectAsState(initial = null)
 
     Column(Modifier.padding(all = 16.dp)) {
         Text("Resumen del Registro", style = MaterialTheme.typography.headlineMedium)
-        Text("Nombre: ${estado.nombre}")
-        Text("Correo: ${estado.correo}")
-        Text("Dirección: ${estado.direccion}")
-        Text("Contraseña: ${"*".repeat(estado.clave.length)}")
-        Text("Términos: ${if (estado.aceptaTerminos) "Aceptados" else "No aceptados"}")
+        Text("Nombre: ${ultimo?.nombre ?: ""}")
+        Text("Correo: ${ultimo?.correo ?: ""}")
+        Text("Dirección: ${ultimo?.direccion ?: ""}")
+        Text("Contraseña: ${"*".repeat(ultimo?.clave?.length ?: 0)}")
+        Text("Términos: ${if (ultimo?.aceptaTerminos == true) "Aceptados" else "No aceptados"}")
     }
 }

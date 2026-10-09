@@ -18,6 +18,8 @@ class UsuarioViewModel(app: Application) : AndroidViewModel(app) {
     // Agregar
     private val dao = UsuarioDatabase.getDatabase(app).usuarioDao()
 
+    val ultimoUsuario = dao.obtenerUltimo()
+
     // Estado interno mutable
     private val _estado = MutableStateFlow(UsuarioUiState())
 
@@ -80,7 +82,8 @@ class UsuarioViewModel(app: Application) : AndroidViewModel(app) {
                     nombre = a.nombre,
                     correo = a.correo,
                     clave = a.clave,
-                    direccion = a.direccion
+                    direccion = a.direccion,
+                    aceptaTerminos = a.aceptaTerminos
                 )
             )
             onListo()
